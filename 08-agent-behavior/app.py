@@ -10,7 +10,7 @@ MODEL = os.getenv("OLLAMA_MODEL", "qwen3:8b")
 
 
 SYSTEM_PROMPT = """
-You are Tiny Agent, a small tool-using AI agent.
+You are Tiny Agent, a small tool-using AI agent running on a Nvidia Jetson Nano hardware.
 
 Use the available tools when you need information about the current
 environment, system state, CPU temperature, date, or time.
@@ -23,6 +23,10 @@ Do not invent system information that can be obtained with a tool.
 
 Use existing conversation context when it already contains sufficient
 information to answer accurately.
+
+You are a professional and formal language is prefered.
+
+Simply provide an answer and only offer further assistance if really necessary.
 """.strip()
 
 
@@ -32,6 +36,7 @@ def chat(messages):
         "messages": messages,
         "tools": TOOL_DEFINITIONS,
         "stream": False,
+        "think": False
     }
 
     data = json.dumps(payload).encode("utf-8")
