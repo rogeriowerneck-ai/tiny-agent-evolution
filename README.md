@@ -197,6 +197,11 @@ For example:
     OLLAMA_URL=http://YOUR_OLLAMA_HOST:11434/api/chat
     OLLAMA_MODEL=qwen3:8b
 
+`OLLAMA_URL` can point to an Ollama server on the local network or to another
+Tailscale node using its MagicDNS hostname. Starting with stage 10, the
+Docker Compose configuration uses Tailscale's `100.100.100.100` DNS resolver
+so MagicDNS hostnames can be resolved from inside the Tiny Agent container.
+
 The `.env` file contains local configuration and is intentionally excluded
 from Git.
 
